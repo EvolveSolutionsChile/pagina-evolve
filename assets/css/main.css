@@ -732,6 +732,73 @@ section,
   z-index: 2;
 }
 
+.section-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 48px;
+  padding: 28px 32px;
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 55%);
+  border-radius: 18px;
+  background:
+    linear-gradient(120deg, color-mix(in srgb, var(--accent-color), transparent 82%), color-mix(in srgb, var(--accent-secondary-color), transparent 94%)),
+    var(--surface-color);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+}
+
+.section-cta-kicker {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--accent-secondary-color);
+  font-family: var(--nav-font);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.section-cta h3 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+}
+
+.section-cta-button {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent-color), color-mix(in srgb, var(--accent-color), var(--accent-secondary-color) 35%));
+  color: var(--contrast-color);
+  font-family: var(--nav-font);
+  font-weight: 700;
+  text-align: center;
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--accent-color), transparent 65%);
+}
+
+.section-cta-button:hover {
+  transform: translateY(-2px);
+  color: var(--contrast-color);
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--accent-color), transparent 55%);
+}
+
+@media (max-width: 767px) {
+  .section-cta {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 22px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .section-cta-button {
+    width: 100%;
+  }
+}
+
 @media (max-width: 575px) {
   .section-title h2 {
     font-size: 28px;
@@ -755,28 +822,36 @@ section,
   overflow: hidden;
 }
 
+.hero>.container {
+  position: relative;
+  z-index: 2;
+}
+
 .hero .hero-background {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color), transparent 95%) 0%, color-mix(in srgb, var(--heading-color), transparent 97%) 100%);
-  z-index: -2;
+  background: #000000;
+  z-index: 0;
 }
 
-.hero .hero-background::before {
-  content: "";
+.hero .hero-video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("../img/bg/abstract-bg-3.webp");
-  background-size: cover;
-  background-position: center;
-  opacity: 0.1;
-  z-index: -1;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  z-index: 0;
+}
+
+.hero .hero-video.is-ready {
+  opacity: 1;
 }
 
 .hero .hero-overlay {
@@ -785,8 +860,17 @@ section,
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--accent-color), transparent 90%) 0%, transparent 50%);
-  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(7, 7, 8, 0.58) 0%, rgba(7, 7, 8, 0.72) 100%),
+    radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--accent-color), transparent 72%) 0%, transparent 55%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .hero-video {
+    transition: none;
+  }
 }
 
 .hero .hero-content {

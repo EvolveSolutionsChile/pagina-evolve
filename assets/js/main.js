@@ -96,6 +96,17 @@
     currentYear.textContent = new Date().getFullYear();
   }
 
+  const heroVideo = document.querySelector('.hero-video');
+  if (heroVideo) {
+    const showHeroVideo = () => heroVideo.classList.add('is-ready');
+
+    if (heroVideo.readyState >= 3) {
+      showHeroVideo();
+    } else {
+      heroVideo.addEventListener('canplay', showHeroVideo, { once: true });
+    }
+  }
+
   /**
    * Animation on scroll function and init
    */
