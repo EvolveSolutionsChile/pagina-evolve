@@ -2756,6 +2756,45 @@ section,
   background-color: transparent !important;
 }
 
+.contact .contact-form-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0 0 20px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  color: var(--default-color);
+  line-height: 1.55;
+}
+
+.contact .contact-form-alert.d-none {
+  display: none;
+}
+
+.contact .contact-form-alert.alert-success {
+  border: 1px solid color-mix(in srgb, var(--accent-secondary-color), transparent 45%);
+  background: color-mix(in srgb, var(--accent-secondary-color), var(--surface-color) 86%);
+}
+
+.contact .contact-form-alert.alert-danger {
+  border: 1px solid color-mix(in srgb, #ff5c6c, transparent 45%);
+  background: color-mix(in srgb, #ff5c6c, var(--surface-color) 88%);
+}
+
+.contact .contact-form-alert-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 1.25rem;
+}
+
+.contact .contact-form-alert.alert-success .contact-form-alert-icon {
+  color: var(--accent-secondary-color);
+}
+
+.contact .contact-form-alert.alert-danger .contact-form-alert-icon {
+  color: #ff7b88;
+}
+
 .contact .form-container .btn-submit {
   background: linear-gradient(145deg, var(--accent-color), color-mix(in srgb, var(--accent-color), #1a4372 30%));
   color: var(--contrast-color);

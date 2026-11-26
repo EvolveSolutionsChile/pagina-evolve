@@ -107,6 +107,57 @@
     }
   }
 
+  const contactForm = document.querySelector('#contact-form');
+  if (contactForm) {
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const formAlert = contactForm.querySelector('#contact-form-alert');
+    const alertIcon = formAlert.querySelector('.contact-form-alert-icon');
+    const alertMessage = formAlert.querySelector('.contact-form-alert-message');
+
+    const showFormAlert = (type, message) => {
+      const isSuccess = type === 'success';
+      formAlert.classList.remove('d-none', 'alert-success', 'alert-danger');
+      formAlert.classList.add(isSuccess ? 'alert-success' : 'alert-danger');
+      alertIcon.className = `bi contact-form-alert-icon ${isSuccess ? 'bi-check-circle-fill' : 'bi-exclamation-triangle-fill'}`;
+      alertMessage.textContent = message;
+      formAlert.focus({ preventScroll: true });
+    };
+
+    contactForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      formAlert.classList.add('d-none');
+      submitButton.disabled = true;
+      submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>Enviando mensaje';
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: {
+            Accept: 'application/json'
+          }
+        });
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || 'No fue posible enviar tu mensaje.');
+        }
+
+        showFormAlert('success', '¡Gracias por escribirnos! Hemos recibido tu mensaje y nos pondremos en contacto contigo a la brevedad.');
+        contactForm.reset();
+        if (window.hcaptcha) {
+          window.hcaptcha.reset();
+        }
+      } catch (error) {
+        showFormAlert('error', error.message || 'No hemos podido enviar tu mensaje. Por favor, inténtalo nuevamente.');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.innerHTML = 'Enviar mensaje <i class="bi bi-send-fill ms-2"></i>';
+      }
+    });
+  }
+
   /**
    * Animation on scroll function and init
    */

@@ -1308,10 +1308,9 @@
               <h3>Envíanos un mensaje</h3>
               <p>Completa el formulario y cuéntanos sobre la solución que necesitas.</p>
 
-              <form action="https://api.web3forms.com/submit" method="POST">
+              <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
                 <input type="hidden" name="access_key" value="71074057-62e7-47cd-81e3-44cbb492710d">
                 <input type="hidden" name="from_name" value="Evolve Solutions">
-                <input type="hidden" name="redirect" value="https://evolvesolutions.cl/gracias.html">
                 <input type="checkbox" name="botcheck" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
 
                 <div class="form-floating mb-3">
@@ -1340,6 +1339,11 @@
                 </div>
 
                 <div class="h-captcha mb-3" data-captcha="true"></div>
+
+                <div id="contact-form-alert" class="alert d-none contact-form-alert" role="alert" aria-live="polite" tabindex="-1">
+                  <i class="bi contact-form-alert-icon" aria-hidden="true"></i>
+                  <span class="contact-form-alert-message"></span>
+                </div>
 
                 <div class="d-grid">
                   <button type="submit" class="btn-submit">Enviar mensaje <i class="bi bi-send-fill ms-2"></i></button>
