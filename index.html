@@ -1308,17 +1308,11 @@
               <h3>Envíanos un mensaje</h3>
               <p>Completa el formulario y cuéntanos sobre la solución que necesitas.</p>
 
-              <form action="https://formsubmit.co/contacto@evolvesolutions.cl" method="POST">
-                <input type="hidden" name="_subject" value="Nueva consulta desde Evolve Solutions">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_next" value="https://evolvesolutions.cl/gracias.html">
-                <input type="hidden" name="_url" value="https://evolvesolutions.cl/#contact">
-                <input type="hidden" name="_captcha" value="true">
-                <input type="hidden" name="_autoresponse" value="Gracias por contactar a Evolve Solutions. Hemos recibido tu mensaje y nos pondremos en contacto contigo a la brevedad.">
-                <div class="form-honey" aria-hidden="true">
-                  <label for="websiteInput">No completar este campo</label>
-                  <input type="text" id="websiteInput" name="_honey" tabindex="-1" autocomplete="off">
-                </div>
+              <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="71074057-62e7-47cd-81e3-44cbb492710d">
+                <input type="hidden" name="from_name" value="Evolve Solutions">
+                <input type="hidden" name="redirect" value="https://evolvesolutions.cl/gracias.html">
+                <input type="checkbox" name="botcheck" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
 
                 <div class="form-floating mb-3">
                   <input type="text" class="form-control" id="nameInput" name="name" placeholder="Nombre" required="">
@@ -1344,6 +1338,8 @@
                   <textarea class="form-control" id="messageInput" name="message" rows="5" placeholder="Cuéntanos sobre tu proyecto o la solución que necesitas" style="height: 150px" required=""></textarea>
                   <label for="messageInput">Cuéntanos sobre tu proyecto o la solución que necesitas</label>
                 </div>
+
+                <div class="h-captcha mb-3" data-captcha="true"></div>
 
                 <div class="d-grid">
                   <button type="submit" class="btn-submit">Enviar mensaje <i class="bi bi-send-fill ms-2"></i></button>
@@ -1419,6 +1415,7 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="https://web3forms.com/client/script.js" async defer></script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
