@@ -2723,13 +2723,37 @@ section,
   color: transparent;
 }
 
+.contact .form-container .form-floating .form-control:-webkit-autofill,
+.contact .form-container .form-floating .form-control:-webkit-autofill:hover,
+.contact .form-container .form-floating .form-control:-webkit-autofill:focus,
+.contact .form-container .form-floating .form-control:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--default-color) !important;
+  caret-color: var(--default-color);
+  -webkit-box-shadow: 0 0 0 1000px #29292f inset !important;
+  box-shadow: 0 0 0 1000px #29292f inset !important;
+  border-color: color-mix(in srgb, var(--accent-color), transparent 55%);
+  transition: background-color 9999s ease-out 0s;
+}
+
+.contact .form-container .form-floating .form-control:autofill {
+  color: var(--default-color);
+  caret-color: var(--default-color);
+  box-shadow: 0 0 0 1000px #29292f inset !important;
+  border-color: color-mix(in srgb, var(--accent-color), transparent 55%);
+}
+
+.contact .form-container .form-floating .form-control:-webkit-autofill~label,
+.contact .form-container .form-floating .form-control:autofill~label {
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+}
+
 .contact .form-container .form-floating label {
   color: color-mix(in srgb, var(--default-color), transparent 40%);
   padding: 1rem 1.25rem 2.5rem 1.25rem;
 }
 
 .contact .form-container .form-floating label::after {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 .contact .form-container .btn-submit {
